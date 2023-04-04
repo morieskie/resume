@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -39,10 +39,10 @@ jobs:
           npm ci
       - name: Build
         run: |
-          npm run build -- --prod
+          npm run build
 #      - name: Lint
 #        run: |
 #          npm run lint
       - name: Test
         run: |
-          npm run test -- --prod
+          npm run test
