@@ -25,7 +25,7 @@
       <div class="name">{{data?.name}}</div>
       <div class="skill-set">
         <section class="intro">
-          <h1 class="animated_skills">
+          <h1 class="animated_skills" *ngIf="roles">
             <div id="js-rotating" [@caption]="state"
                  (@caption.done)="nextItem($event,active);">{{roles[active]}}</div>
           </h1>
