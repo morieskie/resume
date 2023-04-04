@@ -1,0 +1,50 @@
+<!--==================================
+		START === About Section
+	===================================-->
+<section class="ui fullscreen modal" [style.display]="display">
+
+  <!--==================================
+    START === Header
+  ===================================-->
+  <div class="header">
+    <div class="ui grid">
+      <div class="two column row">
+        <div class="left floated column">
+          <div class="ui header backBtn" (click)="onBack()">
+            <i class="chevron left icon"></i>
+            <div class="content">
+              Back
+            </div>
+          </div>
+        </div>
+        <div class="right floated column">
+          <h2 class="ui header">
+            <i class="icon" [ngClass]="iconClass"></i>
+            <span class="content">
+                {{ label }}
+							</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--==================================
+    END === Header
+  ===================================-->
+
+  <!--==================================
+    START === Content
+  ===================================-->
+  <div class="content">
+    <div class="ui container">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <!--==================================
+    END === Content
+  ===================================-->
+
+</section>
+<!--==================================
+  END === About Section
+===================================-->

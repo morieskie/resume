@@ -1,0 +1,10 @@
+<div class="rating">
+  <div class="content">
+    <div class="header">
+      <ng-content></ng-content>
+      <div class="ui small star rating">
+        <i *ngFor="let star of stars" class="icon active" [class.active]="star === 1"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+//.hidden {
+//  visibility: hidden;
+//  height: 0;
+//}
+//
+//[data-animation-effect="fadeInRight"], {
+//  animation-name: appearRight;
+//  animation-duration: 4s;
+//}
+//@keyframes appearRight {
+//  from { transform: translateX(100%);}
+//  to { transform: translateX(0);}
+//}
+//
+//[data-animation-effect="fadeInLeft"] {
+//  animation-name: appearLeft;
+//  animation-duration: 4s;
+//}
+//@keyframes appearLeft {
+//  from { transform: translateX(-100%);}
+//  to { transform: translateX(0);}
+//}

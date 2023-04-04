@@ -1,0 +1,50 @@
+<div class="ui items">
+  <div class="item" *ngIf="item">
+    <div class="ui image">
+      <img [src]="item.imageSrc" alt="">
+    </div>
+    <div class="content">
+      <div class="header">{{ item.projectTitle }}</div>
+      <div class="meta">
+        <span>Date</span>
+        <span>Category</span>
+      </div>
+      <div class="description">
+        <!--        <p>{{item.description}}</p>-->
+        <div class="ui grid">
+          <div class="five column row" *ngFor="let technologies of chunks">
+            <div class="column" *ngFor="let skill of technologies">
+              <i class="fa-{{skill==='database'?'solid':'brands'}} fa-{{skill}} fa-2x"></i>
+            </div>
+          </div>
+        </div>
+        <!--        <div class="ui bulleted list">-->
+        <!--          <div class="item">-->
+        <!--            <div class="content">-->
+        <!--              <div class="header">Header</div>-->
+        <!--              Description-->
+        <!--            </div>-->
+        <!--            <div class="list">-->
+        <!--              <div class="item">-->
+        <!--                Sub-header-->
+        <!--              </div>-->
+        <!--              <div class="item">-->
+        <!--                Sub-header-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--          <div class="item">-->
+        <!--            <div class="content">-->
+        <!--              <div class="header">Header</div>-->
+        <!--              Description-->
+        <!--            </div>-->
+        <!--          </div>-->
+        <!--        </div>-->
+        <p>
+          <i class="linkify icon"></i>
+<!--          <a href="http://www.example.com/">www.example.com</a>-->
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

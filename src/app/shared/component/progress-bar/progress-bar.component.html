@@ -1,0 +1,8 @@
+<div class="ui progress" [ngClass]="className" [@progress]="state">
+  <div class="bar" [style.width]="percentage+'%'">
+    <div class="label">
+      <ng-content></ng-content>
+    </div>
+    <div class="progress">{{percentage}}%</div>
+  </div>
+</div>

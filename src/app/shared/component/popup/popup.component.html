@@ -1,0 +1,12 @@
+<div class="mfp-bg mfp-ready"></div>
+<div class="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-ready" tabindex="-1" style="overflow: hidden auto;"  (click)="onClose()">
+  <div class="mfp-container mfp-s-ready mfp-inline-holder">
+    <div class="mfp-content">
+      <div id="popup-2" class="white-popup mfp-hide1">
+        <ng-content></ng-content>
+        <button title="Close (Esc)" type="button" class="mfp-close" (click)="onClose()">×</button>
+      </div>
+    </div>
+    <div class="mfp-preloader">Loading...</div>
+  </div>
+</div>

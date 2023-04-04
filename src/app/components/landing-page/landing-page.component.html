@@ -1,0 +1,38 @@
+<main>
+
+  <div class="ui top fixed inverted menu">
+    <a class="item" (click)="toggle()">
+      <i class="add user icon"></i>
+    </a>
+    <div class="item" id="social_media_icons" [style.display]="visible?'block':'none'">
+      <a href="#" class="ui facebook button"> <!-- Put link in the href attribute -->
+        <i class="facebook icon"></i>
+      </a>
+      <a href="#" class="ui twitter button"> <!-- Put link in the href attribute -->
+        <i class="twitter icon"></i>
+      </a>
+      <a href="#" class="ui linkedin button"> <!-- Put link in the href attribute -->
+        <i class="linkedin icon"></i>
+      </a>
+      <a href="#" class="ui instagram button"> <!-- Put link in the href attribute -->
+        <i class="instagram icon"></i>
+      </a>
+    </div>
+  </div>
+  <app-nav (nav)="onPageSelect($event)"></app-nav>
+  <div id="name_skills_container">
+    <div id="name_skills">
+      <div class="name">{{data?.name}}</div>
+      <div class="skill-set">
+        <section class="intro">
+          <h1 class="animated_skills">
+            <div id="js-rotating" [@caption]="state"
+                 (@caption.done)="nextItem($event,active);">{{roles[active]}}</div>
+          </h1>
+        </section>
+      </div>
+    </div>
+  </div>
+  <ng-container appSlot></ng-container>
+
+</main>

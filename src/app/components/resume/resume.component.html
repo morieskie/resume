@@ -1,0 +1,77 @@
+<app-modal label="Resume" id="resume_section" iconClass="tasks">
+
+  <div class="ui grid">
+    <div class="sixteen wide column" [@tabsManu]="showTabMenu">
+
+      <div class="ui labeled icon four item stackable menu" id="filter-resume-group" data-animation-effect="fadeInDown">
+        <a class="item " data-group="education" (click)="onSelectTab('education')" [class.active]="tab === 'education'">
+          <i class="university icon"></i> Education
+        </a>
+        <a class="item" data-group="experience" (click)="onSelectTab('experience')"
+           [class.active]="tab === 'experience'">
+          <i class="line chart icon"></i> Experience
+        </a>
+        <a class="item" data-group="skills" (click)="onSelectTab('skills')" [class.active]="tab === 'skills'">
+          <i class="bar chart icon"></i> Skills
+        </a>
+        <a class="item" data-group="testimonials" (click)="onSelectTab('testimonials')"
+           [class.active]="tab === 'testimonials'">
+          <i class="smile icon"></i> Testimonials
+        </a>
+      </div>
+      <div class="resume-section education" *ngIf="tab === 'education'">
+        <app-timeline [items]="education" [@state]="state"></app-timeline>
+      </div>
+      <div class="resume-section experience" *ngIf="tab === 'experience'">
+        <app-timeline [items]="experience" [@state]="state"></app-timeline>
+      </div>
+
+      <div class="resume-section skills" *ngIf="tab === 'skills'" [@state]="state">
+        <div class="ui grid">
+          <div class="ui text container">
+            <div class="ui two column stackable grid padded">
+              <div class="sixteen wide column" data-animation-effect="fadeInUp">
+                <h4 class="ui center aligned header">FRONT-END SKILLS</h4>
+                <app-frontend-skills></app-frontend-skills>
+              </div>
+              <div class="column" data-animation-effect="fadeInLeft" data-anim-delay="300">
+                <h4 class="ui center aligned header">BACK-END SKILLS</h4>
+                <app-backend-skills id="back_end_skills"></app-backend-skills>
+              </div>
+              <div class="column" data-animation-effect="fadeInRight" data-anim-delay="300">
+                <h4 class="ui center aligned header">DEVOPS</h4>
+                <app-dev-ops-skills id="web_tools"></app-dev-ops-skills>
+              </div>
+              <div class="sixteen wide column">
+                <h4 class="ui center aligned header">OTHER SKILLS</h4>
+                <app-progress-bar *ngFor="let item of  technologies"
+                                  [percentage]="(item.competency/5*100)"
+                                  [className]="item.color"> {{item.tech}} </app-progress-bar>
+              </div>
+              <div class="sixteen wide center aligned column">
+                <h4 class="ui center aligned header">STYLING</h4>
+                <app-rating [rating]="4.5" [maxRating]="5">CSS</app-rating>
+                <app-rating [rating]="4">SCSS</app-rating>
+                <app-rating [rating]="3.5">SASS</app-rating>
+                <app-rating [rating]="3.5">LESS</app-rating>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-section testimonials" *ngIf="tab === 'testimonials'" [@state]="state">
+        <div class="ui one column stackable grid">
+          <app-testimony *ngFor="let testimony of testimonies; let i = index" class="column"
+                         [position]="(i%2===0)?'right':'left'">
+            <ng-container name>{{testimony.name}}</ng-container>
+            <ng-container position>{{testimony.position}}</ng-container>
+            {{testimony.testimony}}
+          </app-testimony>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</app-modal>

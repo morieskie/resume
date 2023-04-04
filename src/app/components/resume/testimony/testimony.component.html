@@ -1,0 +1,16 @@
+<div [ngClass]="wrapper">
+  <div class="ui segment">
+    <i class="huge quote icon" [ngClass]="position"></i>
+    <a class="ui label" [ngClass]="ribbon">
+      <span class="person">
+        <ng-content select="[name]"></ng-content>
+      </span>
+      <span class="position">
+        <ng-content select="[position]"></ng-content>
+      </span>
+    </a>
+    <p>
+      <ng-content></ng-content>
+    </p>
+  </div>
+</div>

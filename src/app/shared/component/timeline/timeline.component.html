@@ -1,0 +1,18 @@
+<div class="timeline-container">
+  <div class="timeline-block" *ngFor="let item of items; let i = index">
+    <div class="timeline-img" data-animation-effect="zoomIn">
+      <i>{{item.to | date: 'yyyy'}}</i>
+    </div>
+
+    <div class="timeline-content" *ngIf="i % 2 === 0" data-animation-effect="fadeInLeft">
+      <h2>{{ item.company }}</h2>
+      <p>{{ item.description }}</p>
+    </div>
+
+    <div class="timeline-content" *ngIf="i % 2 !== 0" data-animation-effect="fadeInRight">
+      <h2>{{ item.company }}</h2>
+      <p>{{ item.description }}</p>
+    </div>
+  </div>
+
+</div>
