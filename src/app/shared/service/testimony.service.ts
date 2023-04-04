@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Testimony} from "../model/Testimony";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,6 @@ export class TestimonyService {
   }
 
   get(): Observable<Testimony[]> {
-    return this.client.get<Testimony[]>(`/assets/data/testimonials.json`);
+    return this.client.get<Testimony[]>(`${environment.subDir}/assets/data/testimonials.json`);
   }
 }

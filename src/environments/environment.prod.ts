@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  appTitle: 'Resume'
+  appTitle: 'Resume',
+  subDir: '/resume/'
 };
