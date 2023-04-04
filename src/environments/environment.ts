@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  appTitle: 'Resume',
-  subDir: ''
+  appTitle: 'Resume'
 };
 
 /*
