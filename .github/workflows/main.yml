@@ -17,7 +17,7 @@ jobs:
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-        with: 
+        with:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
@@ -54,15 +54,15 @@ jobs:
 #          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
 #          output-file: "false"
 #
-#      - name: Create Release
-#        uses: actions/create-release@v1
-#        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
-#        with:
-#          tag_name: ${{ steps.changelog.outputs.tag }}
-#          release_name: ${{ steps.changelog.outputs.tag }}
-#          body: ${{ steps.changelog.outputs.clean_changelog }}
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - name: Deploy
         run: |
