@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {SlotDirective} from "../../shared/directive/slot.directive";
 import {AboutComponent} from "../about/about.component";
@@ -6,7 +6,7 @@ import {ResumeComponent} from "../resume/resume.component";
 import {ContactComponent} from "../contact/contact.component";
 import {ModalService} from "../../shared/service/modal.service";
 import {ExperienceService} from "../../shared/service/experience.service";
-import {map} from "rxjs";
+import {map, Subscription} from "rxjs";
 import {PortfolioComponent} from "../portfolio/portfolio.component";
 import {Me} from "../../shared/model/me";
 import {MeService} from "../../shared/service/me.service";
@@ -34,7 +34,7 @@ import {MeService} from "../../shared/service/me.service";
     ])
   ]
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent implements OnInit, OnDestroy {
 
   visible = false;
   components = [
@@ -67,6 +67,9 @@ export class LandingPageComponent implements OnInit {
 
   @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
 
+  aboutSubRef: Subscription | undefined;
+  experienceSubRef: Subscription | undefined;
+
   constructor(
     private modalService: ModalService,
     private experienceService: ExperienceService,
@@ -75,16 +78,11 @@ export class LandingPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.experienceService.get().pipe(
+    this.experienceSubRef = this.experienceService.get().pipe(
       map((experience) => experience.map((v, k) => v.description)))
       .subscribe(response => this.roles = response);
-    this.aboutService.get().subscribe(response => this.data = response)
+    this.aboutSubRef = this.aboutService.get().subscribe(response => this.data = response)
   }
-
-  onChangeState() {
-    this.state = (this.state === 'enter') ? 'leave' : 'enter';
-  }
-
 
   nextItem(event: any, i: number) {
     if (event.toState === 'enter') {
@@ -122,6 +120,11 @@ export class LandingPageComponent implements OnInit {
 
   toggle() {
     this.visible = !this.visible;
+  }
+
+  ngOnDestroy(): void {
+    this.aboutSubRef?.unsubscribe();
+    this.experienceSubRef?.unsubscribe()
   }
 
 }

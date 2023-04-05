@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {animate, group, query, stagger, style, transition, trigger} from "@angular/animations";
 import {TestimonyService} from "../../shared/service/testimony.service";
 import {Testimony} from "../../shared/model/Testimony";
@@ -9,6 +9,7 @@ import {ExperienceService} from "../../shared/service/experience.service";
 import {Tab} from "../../shared/enum/tab";
 import {Technology} from "../../shared/model/Technology";
 import {TechnologyService} from "../../shared/service/technology.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-resume',
@@ -63,7 +64,7 @@ import {TechnologyService} from "../../shared/service/technology.service";
     ]),
   ]
 })
-export class ResumeComponent implements OnInit {
+export class ResumeComponent implements OnInit, OnDestroy {
 
   state: Tab;
   showTabMenu: string | undefined = 'off';
@@ -78,6 +79,10 @@ export class ResumeComponent implements OnInit {
 
   testimonies: Testimony[] | undefined;
 
+  eduSubRef: Subscription | undefined;
+  expSubRef: Subscription | undefined;
+  techSubRef: Subscription | undefined;
+  testimSubRef: Subscription | undefined;
 
   constructor(
     private educationService: EducationService,
@@ -87,24 +92,31 @@ export class ResumeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.educationService.get().subscribe(response => {
+    this.eduSubRef = this.educationService.get().subscribe(response => {
       this.showTabMenu = 'on'
       this.education = response;
       this.tab = 'education';
       this.state = 'education';
     })
-    this.experienceService.get().subscribe(response => this.experience = response)
-    this.technologyService.get().subscribe(response => this.technologies = response.map((v)=>{
+    this.expSubRef = this.experienceService.get().subscribe(response => this.experience = response)
+    this.techSubRef = this.technologyService.get().subscribe(response => this.technologies = response.map((v) => {
       console.log(v.competency,)
       // v.competency = Competency[v.competency];
       return v
     }))
-    this.testimonyService.get().subscribe(response => this.testimonies = response)
+    this.testimSubRef = this.testimonyService.get().subscribe(response => this.testimonies = response)
   }
 
   onSelectTab(tab: Tab) {
     this.tab = tab;
     this.state = tab;
+  }
+
+  ngOnDestroy(): void {
+    this.eduSubRef?.unsubscribe();
+    this.testimSubRef?.unsubscribe();
+    this.expSubRef?.unsubscribe();
+    this.techSubRef?.unsubscribe();
   }
 
 }

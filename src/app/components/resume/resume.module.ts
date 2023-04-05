@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FrontendSkillsComponent} from "./frontend-skills/frontend-skills.component";
 import {BackendSkillsComponent} from "./backend-skills/backend-skills.component";
-import {DevOpsSkillsComponent} from "./pizza-chart/dev-ops-skills.component";
+import {DevOpsSkillsComponent} from "./dev-ops-skills/dev-ops-skills.component";
 import {ProgressBarComponent} from "../../shared/component/progress-bar/progress-bar.component";
 import {RatingComponent} from "../../shared/component/rating/rating.component";
 import {TimelineComponent} from "../../shared/component/timeline/timeline.component";

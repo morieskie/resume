@@ -19,6 +19,5 @@ export class PortfolioItemComponent {
   ngOnInit() {
     if (this.item?.technologies)
       this.chunks = chunk(this.item.technologies, 5)
-    console.log(this.chunks)
   }
 }

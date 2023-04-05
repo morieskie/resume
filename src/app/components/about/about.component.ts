@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit } from '@angular/core';
 import {animate, query, stagger, state, style, transition, trigger} from "@angular/animations";
 import {MeService} from "../../shared/service/me.service";
 import {Me} from "../../shared/model/me";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-about',
@@ -70,12 +71,14 @@ import {Me} from "../../shared/model/me";
     ])
   ]
 })
-export class AboutComponent implements OnInit, AfterViewInit {
+export class AboutComponent implements OnInit, OnDestroy {
 
   model: Me | undefined
   fadeInRight = 'off'
   fadeInLeft = 'off'
   fadeInUp = 'off'
+
+  aboutSubRef: Subscription | undefined;
 
   constructor(private aboutService: MeService) {
   }
@@ -84,15 +87,12 @@ export class AboutComponent implements OnInit, AfterViewInit {
     this.fadeInLeft = 'on';
     this.fadeInRight = 'on';
     this.fadeInUp = 'on';
-    this.aboutService.get().subscribe(response => {
+    this.aboutSubRef = this.aboutService.get().subscribe(response => {
       this.model = response;
     });
   }
 
-  ngAfterViewInit() {
-  }
-
-  onBack() {
-    console.log('Going back!!')
+  ngOnDestroy(): void {
+    this.aboutSubRef?.unsubscribe()
   }
 }

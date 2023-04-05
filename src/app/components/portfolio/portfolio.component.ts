@@ -1,15 +1,16 @@
-import {Component, ComponentRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, ComponentRef, OnDestroy, ViewChild} from '@angular/core';
 import {SlotDirective} from "../../shared/directive/slot.directive";
 import {PortfolioItemComponent} from "./portfolio-item/portfolio-item.component";
 import {Project} from "../../shared/model/Project";
 import {PortfolioService} from "../../shared/service/portfolio.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements OnDestroy {
   @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
 
   show = false;
@@ -19,11 +20,17 @@ export class PortfolioComponent {
 
   popup: ComponentRef<PortfolioItemComponent> | undefined;
 
+  portfolioSubRef: Subscription | undefined;
+
   constructor(private portfolioService: PortfolioService) {
   }
 
   ngOnInit() {
-    this.portfolioService.get().subscribe(response => this.portfolios = response)
+    this.portfolioSubRef = this.portfolioService.get().subscribe(response => this.portfolios = response)
+  }
+
+  ngOnDestroy(): void {
+    this.portfolioSubRef?.unsubscribe()
   }
 
   onShowPopup(portfolio: Project) {
