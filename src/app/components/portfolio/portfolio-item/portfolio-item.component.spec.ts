@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PortfolioItemComponent } from './portfolio-item.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PortfolioItemComponent', () => {
   let component: PortfolioItemComponent;
@@ -8,7 +10,8 @@ describe('PortfolioItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PortfolioItemComponent ]
+      declarations: [ PortfolioItemComponent ],
+      imports:[ SharedModule, HttpClientModule]
     })
     .compileComponents();
 

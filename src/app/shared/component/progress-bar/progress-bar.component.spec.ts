@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProgressBarComponent } from './progress-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ProgressBarComponent', () => {
   let component: ProgressBarComponent;
@@ -8,7 +9,8 @@ describe('ProgressBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProgressBarComponent ]
+      declarations: [ ProgressBarComponent ],
+      imports: [BrowserAnimationsModule]
     })
     .compileComponents();
 
