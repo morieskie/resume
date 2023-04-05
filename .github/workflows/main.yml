@@ -47,13 +47,13 @@ jobs:
 #        run: |
 #          npm run test
 
-#      - name: Conventional Changelog Action
-#        id: changelog
-#        uses: TriPSs/conventional-changelog-action@v3
-#        with:
-#          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
-#          output-file: "false"
-#
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.TOKEN_GITHUB_ACTION }}
+          output-file: "false"
+
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
