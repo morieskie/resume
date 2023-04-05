@@ -68,5 +68,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB_ACTION }}
         run: |
-          npm run deploy
+          npm run deploy --no-silent
 
