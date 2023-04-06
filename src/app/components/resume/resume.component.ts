@@ -10,7 +10,6 @@ import {Tab} from "../../shared/enum/tab";
 import {Technology} from "../../shared/model/Technology";
 import {TechnologyService} from "../../shared/service/technology.service";
 import {Subscription} from "rxjs";
-import { ResumeSection } from 'src/app/shared/model/nav-item';
 
 @Component({
   selector: 'app-resume',
@@ -65,7 +64,7 @@ import { ResumeSection } from 'src/app/shared/model/nav-item';
     ]),
   ]
 })
-export class ResumeComponent implements OnInit, OnDestroy, ResumeSection {
+export class ResumeComponent implements OnInit, OnDestroy {
 
   state: Tab;
   showTabMenu = 'off';
