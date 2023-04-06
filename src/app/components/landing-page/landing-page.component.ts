@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
+import {animate, state, style, transition, trigger, AnimationEvent} from "@angular/animations";
 import {SlotDirective} from "../../shared/directive/slot.directive";
 import {AboutComponent} from "../about/about.component";
 import {ResumeComponent} from "../resume/resume.component";
@@ -106,7 +106,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
     this.appSlot.viewContainerRef.clear();
     if (page) {
-      const component = this.appSlot.viewContainerRef.createComponent<Com>(page.component)
+      const component = this.appSlot.viewContainerRef.createComponent<any| NavItem>(page.component)
       component.instance.display = 'block';
       this.modalService.activate()
       this.modalService.observe().subscribe((res) => {

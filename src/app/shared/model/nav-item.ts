@@ -1,4 +1,4 @@
 export interface NavItem {
-    component: unknown,
+    component: unknown | any,
     path: string
   }
