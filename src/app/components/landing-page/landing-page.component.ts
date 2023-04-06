@@ -106,7 +106,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
     this.appSlot.viewContainerRef.clear();
     if (page) {
-      const component = this.appSlot.viewContainerRef.createComponent<any| NavItem>(page.component)
+      const component = this.appSlot.viewContainerRef.createComponent<any>(page.component)
       component.instance.display = 'block';
       this.modalService.activate()
       this.modalService.observe().subscribe((res) => {
