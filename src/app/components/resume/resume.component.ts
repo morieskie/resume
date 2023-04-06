@@ -31,7 +31,7 @@ import {Subscription} from "rxjs";
           visibility: 'hidden'
         }),
         group([
-          animate(1000, style({
+          animate(1.5, style({
             height: '*',
             visibility: 'visible'
           })),
@@ -43,20 +43,20 @@ import {Subscription} from "rxjs";
           ], {optional: true}),
           query('[data-animation-effect="zoomIn"]', [
             style({transform: 'scale(0)'}),
-            stagger(300, [
+            stagger(200, [
               animate('.2s 100ms ease-in', style({transform: 'scale(1)'}))
             ])
           ], {optional: true}),
           query('[data-animation-effect="fadeInLeft"],.testimonial_right', [
             style({transform: 'translateX(-150%)', visibility: 'hidden', opacity: 0}),
             stagger(300, [
-              animate('1s 100ms ease-in', style({transform: 'translateX(0)', visibility: 'visible', opacity: 1}))
+              animate('0.2s 100ms ease-in', style({transform: 'translateX(0)', visibility: 'visible', opacity: 1}))
             ])
           ], {optional: true}),
           query('[data-animation-effect="fadeInRight"],.testimonial_left', [
             style({transform: 'translateX(100%)', visibility: 'hidden', opacity: 0}),
-            stagger(600, [
-              animate('1s 100ms ease-in', style({transform: 'translateX(0)', visibility: 'visible', opacity: 1}))
+            stagger(400, [
+              animate('0.21s 100ms ease-in', style({transform: 'translateX(0)', visibility: 'visible', opacity: 1}))
             ])
           ], {optional: true}),
         ]),
