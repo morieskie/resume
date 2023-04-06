@@ -67,7 +67,7 @@ import {Subscription} from "rxjs";
 export class ResumeComponent implements OnInit, OnDestroy {
 
   state: Tab;
-  showTabMenu: string = 'off';
+  showTabMenu = 'off';
 
   education: Education[] | undefined;
 

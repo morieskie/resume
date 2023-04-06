@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Project} from "../../../shared/model/Project";
 
-export const chunk = (arr: any[], size: number) =>
-  Array.from({length: Math.ceil(arr.length / size)}, (_: any, i: number) =>
+export const chunk = (arr: string[], size: number) =>
+  Array.from({length: Math.ceil(arr.length / size)}, (_: Project, i: number) =>
     arr.slice(i * size, i * size + size)
   );
 
@@ -13,7 +13,7 @@ export const chunk = (arr: any[], size: number) =>
 })
 export class PortfolioItemComponent implements OnInit {
   @Input() item: Project | undefined;
-  chunks: any[] = [];
+  chunks: string[][] = [];
 
   ngOnInit() {
     if (this.item?.technologies)

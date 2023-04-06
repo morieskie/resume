@@ -6,8 +6,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent {
-  @Output() close : EventEmitter<void> = new EventEmitter<void>()
+  @Output() closed : EventEmitter<void> = new EventEmitter<void>()
   onClose() {
-    this.close.emit();
+    this.closed.emit();
   }
 }

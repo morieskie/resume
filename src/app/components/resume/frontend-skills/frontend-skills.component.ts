@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ChartConfiguration, ChartOptions, ChartType} from "chart.js";
-import {ChartDataset} from 'chart.js';
 
 @Component({
   selector: 'app-frontend-skills',
@@ -23,7 +22,7 @@ export class FrontendSkillsComponent {
       },
     }
   };
-  public barChartLabels: any[] = ["TypeScript", "JavaScript", "Angular", "React", "Vue3"];
+  public barChartLabels: string[] = ["TypeScript", "JavaScript", "Angular", "React", "Vue3"];
   public barChartType: ChartType = 'bar';
   public barChartLegend = false;
   public barChartPlugins = [];

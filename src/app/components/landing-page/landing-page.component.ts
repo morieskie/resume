@@ -10,6 +10,7 @@ import {map, Subscription} from "rxjs";
 import {PortfolioComponent} from "../portfolio/portfolio.component";
 import {Me} from "../../shared/model/me";
 import {MeService} from "../../shared/service/me.service";
+import { NavItem } from 'src/app/shared/model/nav-item';
 
 @Component({
   selector: 'app-landing-page',
@@ -37,7 +38,7 @@ import {MeService} from "../../shared/service/me.service";
 export class LandingPageComponent implements OnInit, OnDestroy {
 
   visible = false;
-  components = [
+  components: NavItem[] = [
     {
       component: AboutComponent,
       path: 'about'
@@ -63,7 +64,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   active = 0;
 
-  state: string = 'enter';
+  state = 'enter';
 
   @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
 
@@ -84,7 +85,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.aboutSubRef = this.aboutService.get().subscribe(response => this.data = response)
   }
 
-  nextItem(event: any, i: number) {
+  nextItem(event: AnimationEvent) {
     if (event.toState === 'enter') {
       this.state = 'leave';
 
@@ -105,7 +106,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
     this.appSlot.viewContainerRef.clear();
     if (page) {
-      const component = this.appSlot.viewContainerRef.createComponent<any>(page.component)
+      const component = this.appSlot.viewContainerRef.createComponent<Com>(page.component)
       component.instance.display = 'block';
       this.modalService.activate()
       this.modalService.observe().subscribe((res) => {

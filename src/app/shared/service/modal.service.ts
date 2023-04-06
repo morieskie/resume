@@ -7,9 +7,6 @@ import {BehaviorSubject} from "rxjs";
 export class ModalService {
   active: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
-  constructor() {
-  }
-
   observe() {
     return this.active;
   }

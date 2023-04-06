@@ -28,7 +28,4 @@ import {PortfolioModule} from "../portfolio/portfolio.module";
   ]
 })
 export class LandingPageModule {
-
-  constructor() {
-  }
 }

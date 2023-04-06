@@ -7,7 +7,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class NavComponent {
 
-  @Output() nav: EventEmitter<any> = new EventEmitter<any>();
+  @Output() nav: EventEmitter<string> = new EventEmitter<string>();
 
   onClick(path: string) {
     this.nav.emit(path);

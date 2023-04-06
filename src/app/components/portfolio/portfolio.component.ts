@@ -37,7 +37,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.appSlot.viewContainerRef.clear();
     this.popup = this.appSlot.viewContainerRef.createComponent<PortfolioItemComponent>(PortfolioItemComponent);
     this.popup.instance.item = portfolio
-    this.popup.instance
     this.show = true;
   }
 

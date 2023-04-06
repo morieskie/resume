@@ -1,10 +1,10 @@
-import { ComponentFactory, ComponentRef, ElementRef, EmbeddedViewRef, EnvironmentInjector, Injector, NgModuleRef, TemplateRef, Type, ViewContainerRef, ViewRef } from '@angular/core';
+import { ComponentFactory, ComponentRef, ElementRef, EmbeddedViewRef, EnvironmentInjector, InjectionToken, Injector, NgModuleRef, TemplateRef, Type, ViewContainerRef, ViewRef } from '@angular/core';
 import { SlotDirective } from './slot.directive';
 import { TestBed } from '@angular/core/testing';
 import { SharedModule } from '../shared.module';
 
 class ViewContainerRefTest extends ViewContainerRef {
-  override get element(): ElementRef<any> {
+  override get element(): ElementRef<string> {
     throw new Error('Method not implemented.');
   }
   override get injector(): Injector {
@@ -16,8 +16,10 @@ class ViewContainerRefTest extends ViewContainerRef {
   override clear(): void {
     throw new Error('Method not implemented.');
   }
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
   override get(index: number): ViewRef | null {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.' + index);
   }
   override get length(): number {
     throw new Error('Method not implemented.');
@@ -25,28 +27,30 @@ class ViewContainerRefTest extends ViewContainerRef {
 
   override createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C | undefined, options?: { index?: number | undefined; injector?: Injector | undefined; } | undefined): EmbeddedViewRef<C>;
   override createEmbeddedView<C>(templateRef: TemplateRef<C>, context?: C | undefined, index?: number | undefined): EmbeddedViewRef<C>;
-  override createEmbeddedView(templateRef: unknown, context?: unknown, index?: unknown): import("@angular/core").EmbeddedViewRef<any> | import("@angular/core").EmbeddedViewRef<any> {
-    throw new Error('Method not implemented.');
+ // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+  override createEmbeddedView(templateRef: unknown, context?: unknown, index?: unknown): import("@angular/core").EmbeddedViewRef<string> | import("@angular/core").EmbeddedViewRef<string> {
+    throw new Error('Method not implemented.' + index,);
   }
   override createComponent<C>(componentType: Type<C>, options?: { index?: number | undefined; injector?: Injector | undefined; ngModuleRef?: NgModuleRef<unknown> | undefined; environmentInjector?: NgModuleRef<unknown> | EnvironmentInjector | undefined; projectableNodes?: Node[][] | undefined; } | undefined): ComponentRef<C>;
-  override createComponent<C>(componentFactory: ComponentFactory<C>, index?: number | undefined, injector?: Injector | undefined, projectableNodes?: any[][] | undefined, environmentInjector?: EnvironmentInjector | NgModuleRef<any> | undefined): ComponentRef<C>;
-  override createComponent(componentFactory: unknown, index?: unknown, injector?: unknown, projectableNodes?: unknown, environmentInjector?: unknown): import("@angular/core").ComponentRef<any> | import("@angular/core").ComponentRef<any> {
-    throw new Error('Method not implemented.');
+  override createComponent<C>(componentFactory: ComponentFactory<C>, index?: number | undefined, injector?: Injector | undefined, projectableNodes?: string[][] | undefined, environmentInjector?: EnvironmentInjector | NgModuleRef<string> | undefined): ComponentRef<C>;
+  override createComponent(componentFactory: unknown, index?: unknown, injector?: unknown, projectableNodes?: unknown, environmentInjector?: unknown): import("@angular/core").ComponentRef<string> | import("@angular/core").ComponentRef<string> {
+    throw new Error('Method not implemented.'+index+InjectionToken+injector+projectableNodes+environmentInjector+componentFactory);
   }
   override insert(viewRef: ViewRef, index?: number | undefined): ViewRef {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'+viewRef+index);
   }
   override move(viewRef: ViewRef, currentIndex: number): ViewRef {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'+viewRef+currentIndex);
   }
   override indexOf(viewRef: ViewRef): number {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'+viewRef);
   }
   override remove(index?: number | undefined): void {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'+index);
   }
   override detach(index?: number | undefined): ViewRef | null {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'+index);
   }
 
 }

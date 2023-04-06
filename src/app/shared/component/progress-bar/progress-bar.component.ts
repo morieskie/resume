@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {animate, query, stagger, style, transition, trigger, state} from "@angular/animations";
+import {animate, query, stagger, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-progress-bar',
@@ -19,7 +19,7 @@ import {animate, query, stagger, style, transition, trigger, state} from "@angul
   ]
 })
 export class ProgressBarComponent implements OnInit {
-  @Input() percentage: number = 0;
+  @Input() percentage = 0;
   @Input() color: string | undefined;
   @Input() className: string | undefined;
 
