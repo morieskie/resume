@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {ChartConfiguration, ChartOptions, ChartType} from "chart.js";
 import {ChartDataset} from 'chart.js';
 
-// import { Label, Color } from 'ng2-charts';
 @Component({
   selector: 'app-frontend-skills',
   templateUrl: './frontend-skills.component.html',
@@ -19,22 +18,9 @@ export class FrontendSkillsComponent {
       }
     },
     plugins: {
-      // legend: {
-      //   display: false,
-      //   position: 'top',
-      //   labels: {
-      //     color: '#000'
-      //   }
-      // },
       title: {
         display: false,
-        position: 'bottom',
-        text: 'Custom Chart Title',
       },
-      // subtitle: {
-      //   display: false,
-      //   text: 'Custom Chart Subtitle'
-      // }
     }
   };
   public barChartLabels: any[] = ["TypeScript", "JavaScript", "Angular", "React", "Vue3"];
@@ -51,7 +37,4 @@ export class FrontendSkillsComponent {
       },
     ],
   };
-
-  constructor() {
-  }
 }

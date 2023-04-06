@@ -1,4 +1,4 @@
-import {Component, ComponentRef, OnDestroy, ViewChild} from '@angular/core';
+import {Component, ComponentRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {SlotDirective} from "../../shared/directive/slot.directive";
 import {PortfolioItemComponent} from "./portfolio-item/portfolio-item.component";
 import {Project} from "../../shared/model/Project";
@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-export class PortfolioComponent implements OnDestroy {
+export class PortfolioComponent implements OnInit, OnDestroy {
   @ViewChild(SlotDirective, {static: true}) appSlot!: SlotDirective
 
   show = false;

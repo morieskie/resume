@@ -67,7 +67,7 @@ import {Subscription} from "rxjs";
 export class ResumeComponent implements OnInit, OnDestroy {
 
   state: Tab;
-  showTabMenu: string | undefined = 'off';
+  showTabMenu: string = 'off';
 
   education: Education[] | undefined;
 
@@ -75,7 +75,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
 
   technologies: Technology[] | undefined;
 
-  tab: Tab
+  tab: Tab | undefined;
 
   testimonies: Testimony[] | undefined;
 
@@ -99,11 +99,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
       this.state = 'education';
     })
     this.expSubRef = this.experienceService.get().subscribe(response => this.experience = response)
-    this.techSubRef = this.technologyService.get().subscribe(response => this.technologies = response.map((v) => {
-      console.log(v.competency,)
-      // v.competency = Competency[v.competency];
-      return v
-    }))
+    this.techSubRef = this.technologyService.get().subscribe(response => this.technologies = response.map((v) => v))
     this.testimSubRef = this.testimonyService.get().subscribe(response => this.testimonies = response)
   }
 

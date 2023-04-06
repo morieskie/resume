@@ -1,11 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-testimony',
   templateUrl: './testimony.component.html',
   styleUrls: ['./testimony.component.scss'],
 })
-export class TestimonyComponent {
+export class TestimonyComponent implements OnInit {
   @Input() position: 'right' | 'left' = 'left';
   wrapper = 'testimonial_left';
   ribbon = 'right ribbon';

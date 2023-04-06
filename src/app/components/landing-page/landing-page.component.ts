@@ -59,7 +59,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   data: Me | undefined;
 
 
-  roles!: string[];
+  roles!: string[] | undefined;
 
   active = 0;
 
@@ -79,7 +79,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.experienceSubRef = this.experienceService.get().pipe(
-      map((experience) => experience.map((v, k) => v.description)))
+      map((experience) => experience.map((v) => v.description)))
       .subscribe(response => this.roles = response);
     this.aboutSubRef = this.aboutService.get().subscribe(response => this.data = response)
   }
@@ -89,7 +89,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       this.state = 'leave';
 
       setTimeout(() => {
-        if (this.active < this.roles.length - 1) {
+        if (this.roles && this.active < this.roles.length - 1) {
           this.active++;
         } else {
           this.active = 0
@@ -101,7 +101,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   onPageSelect(path: string) {
 
-    const page = this.components.find((v, i) => v.path === path);
+    const page = this.components.find((v) => v.path === path);
 
     this.appSlot.viewContainerRef.clear();
     if (page) {

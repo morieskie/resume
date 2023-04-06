@@ -29,7 +29,4 @@ export class BackendSkillsComponent {
   };
 
   public doughnutChartType: ChartType = 'doughnut';
-
-  constructor() {
-  }
 }

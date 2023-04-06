@@ -26,7 +26,4 @@ export class DevOpsSkillsComponent {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-
-  constructor() {
-  }
 }
